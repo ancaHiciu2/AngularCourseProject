@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Recipe } from './recipe.model';
 
 @Component({
@@ -7,9 +7,13 @@ import { Recipe } from './recipe.model';
   styleUrls: ['./recipe-list.component.css']
 })
 export class RecipeListComponent {
+  @Output() recipeClicked=new EventEmitter<Recipe>();
   recipes : Recipe[]=[
     new Recipe("Recipe1", "Tzuchini recipe", "https://theabsolutefoodie.com/wp-content/uploads/2022/07/indian-zucchini-recipes.jpg"),
     new Recipe("Recipe2", "Tartar recipe", "https://www.inspiredtaste.net/wp-content/uploads/2019/02/Homemade-Tartar-Sauce-Recipe-1200.jpg"),
   ];
 
+  onRecipeClicked(recipe:Recipe){
+this.recipeClicked.emit(recipe);
+  }
 }
