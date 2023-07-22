@@ -15,6 +15,6 @@ export class ShoppingEditComponent{
 
     onAddClicked(nameInput:HTMLInputElement){
         let ingredient:Ingredient=new Ingredient(nameInput.value,Number(this.amountInputed.nativeElement.value));
-        this.shoppingListService.addIngredients(ingredient);
+        this.shoppingListService.addIngredient(ingredient);
     }
 }
