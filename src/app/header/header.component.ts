@@ -1,5 +1,6 @@
 
-import { Component,EventEmitter, Output } from "@angular/core";
+import { Component} from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-header',
@@ -9,16 +10,7 @@ import { Component,EventEmitter, Output } from "@angular/core";
 
 export class HeaderComponent{
     collapsed=true;
-    @Output() recipesClicked=new EventEmitter<boolean>(); 
-    showRecipes:boolean;
 
-    onRecipes(){
-        this.showRecipes=true;
-        this.recipesClicked.emit(this.showRecipes);
-    }
+    constructor(private router:Router){}
 
-    onShopping(){
-        this.showRecipes=false;
-        this.recipesClicked.emit(this.showRecipes);
-    }
 }

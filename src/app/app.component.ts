@@ -6,10 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  showRecipes:boolean=true;
-  onClickedRecipes(setState:boolean){
-    this.showRecipes=setState;
-  }
   
 }
   
