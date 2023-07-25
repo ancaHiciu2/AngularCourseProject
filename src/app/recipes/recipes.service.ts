@@ -3,7 +3,6 @@ import { Recipe } from "./recipe-list/recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 
 export class RecipesService{
-    recipeSelected=new EventEmitter<Recipe>();
     
     private recipes : Recipe[]=[
         new Recipe(
@@ -20,6 +19,10 @@ export class RecipesService{
 
       getRecipes(): Recipe[]{
         return this.recipes.slice();
+      }
+
+      getRecipe(index:number){
+        return this.recipes[index];
       }
 
 }
