@@ -3,7 +3,6 @@ import { Recipe } from "./recipe-list/recipe.model";
 import { Ingredient } from "../shared/ingredient.model";
 
 export class RecipesService{
-    recipeSelected=new EventEmitter<Recipe>();
     
     private recipes : Recipe[]=[
         new Recipe(
