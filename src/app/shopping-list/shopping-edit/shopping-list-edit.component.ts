@@ -42,6 +42,11 @@ onSubmit(form: NgForm){
 this.formVC.form.reset();
 }
 
+onClear(){
+    this.formVC.form.reset();
+    this.editMode=false;
+}
+
 ngOnDestroy(){
     this.editingSub.unsubscribe();
 }
