@@ -13,6 +13,8 @@ export class ShoppingEditComponent implements OnInit, OnDestroy{
 editingSub:Subscription;
 editMode:boolean;
 editedItemIndex:number;
+editedIngredient:Ingredient;
+@ViewChild ('f',{static:false})form:NgForm;
     constructor(private shoppingListService:ShoppingListService){
     }
 
@@ -20,6 +22,11 @@ ngOnInit(){
     this.editingSub=this.shoppingListService.startedEditing.subscribe(index=>{
         this.editMode=true;
         this.editedItemIndex=index;
+        this.editedIngredient=this.shoppingListService.getIngredient(index);
+        this.form.form.patchValue({
+            igredName:this.editedIngredient.name,
+            igredQ:this.editedIngredient.amount
+        })
     })
 }
 

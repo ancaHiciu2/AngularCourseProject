@@ -12,6 +12,10 @@ export class ShoppingListService{
         new Ingredient("Pepper",200)
       ];
 
+      getIngredient(index:number):Ingredient{
+        return this.ingredients[index];
+      }
+
       getIngredients(){
         return this.ingredients;
       }
