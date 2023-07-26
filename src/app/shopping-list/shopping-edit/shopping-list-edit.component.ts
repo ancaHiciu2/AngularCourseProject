@@ -10,13 +10,14 @@ import { Subscription } from "rxjs";
     styleUrls:['./shopping-list-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy{
+
 editingSub:Subscription;
-editMode:boolean;
+editMode:boolean=false;
 editedItemIndex:number;
 editedIngredient:Ingredient;
 @ViewChild ('f',{static:false})form:NgForm;
-    constructor(private shoppingListService:ShoppingListService){
-    }
+
+constructor(private shoppingListService:ShoppingListService){}
 
 ngOnInit(){
     this.editingSub=this.shoppingListService.startedEditing.subscribe(index=>{
@@ -32,7 +33,11 @@ ngOnInit(){
 
 onSubmit(form: NgForm){
     let ingredient:Ingredient=new Ingredient(form.value.igredName,+form.value.igredQ);
+    if(this.editMode){
+        this.shoppingListService.updateIngredient(this.editedItemIndex,ingredient);
+    }else{
     this.shoppingListService.addIngredient(ingredient);
+    }
 }
 
 ngOnDestroy(){
