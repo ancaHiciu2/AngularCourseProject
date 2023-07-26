@@ -15,7 +15,7 @@ editingSub:Subscription;
 editMode:boolean=false;
 editedItemIndex:number;
 editedIngredient:Ingredient;
-@ViewChild ('f',{static:false})form:NgForm;
+@ViewChild ('f',{static:false})formVC:NgForm;
 
 constructor(private shoppingListService:ShoppingListService){}
 
@@ -24,7 +24,7 @@ ngOnInit(){
         this.editMode=true;
         this.editedItemIndex=index;
         this.editedIngredient=this.shoppingListService.getIngredient(index);
-        this.form.form.patchValue({
+        this.formVC.form.patchValue({
             igredName:this.editedIngredient.name,
             igredQ:this.editedIngredient.amount
         })
@@ -38,6 +38,8 @@ onSubmit(form: NgForm){
     }else{
     this.shoppingListService.addIngredient(ingredient);
     }
+    this.editMode=false;
+this.formVC.form.reset();
 }
 
 ngOnDestroy(){
