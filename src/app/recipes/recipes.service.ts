@@ -18,11 +18,18 @@ export class RecipesService{
       ];
 
       getRecipes(): Recipe[]{
-        return this.recipes.slice();
+        return this.recipes;
       }
 
       getRecipe(index:number){
         return this.recipes[index];
       }
 
+      updateRecipe(index:number,recipe:Recipe){
+        this.recipes[index]=recipe;
+      }
+
+      addRecipe(recipe:Recipe){
+        this.recipes.push(recipe);
+      }
 }
