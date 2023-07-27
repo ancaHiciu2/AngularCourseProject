@@ -60,6 +60,13 @@ onSubmit(){
 console.log(this.recipeForm);
 }
 
+onAddIngredient():void{
+  (<FormArray>this.recipeForm.get(this.ingredientsData)).controls.push(new FormGroup({
+    'name': new FormControl(null),
+    'amount':new FormControl(null)
+  }))
+}
+
 get controls()
 {
   return (<FormArray>this.recipeForm.get(this.ingredientsData)).controls;
