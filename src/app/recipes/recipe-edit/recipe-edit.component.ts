@@ -44,4 +44,7 @@ initForm(){
   });
 }
 
+onSubmit(){
+console.log(this.recipeForm);
+}
 }
