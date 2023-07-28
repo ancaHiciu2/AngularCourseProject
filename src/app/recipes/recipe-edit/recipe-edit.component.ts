@@ -69,8 +69,7 @@ onSubmit(){
   }else{
     this.recipeService.addRecipe(newRecipe);
   }
-this.onCancel();
-  
+  this.onCancel();
 }
 
 onAddIngredient():void{
@@ -87,6 +86,11 @@ get controls()
 
 onCancel(){
 this.router.navigate(['../'],{relativeTo:this.route});
+}
+
+onDeleteIngredient(index:number):void{
+
+(<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
 }
 
 }
