@@ -1,6 +1,7 @@
 
-import { Component} from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { Router } from "@angular/router";
+import { DataStorageService } from "../shared/data-storage.service";
 
 @Component({
     selector: 'app-header',
@@ -11,6 +12,13 @@ import { Router } from "@angular/router";
 export class HeaderComponent{
     collapsed=true;
 
-    constructor(private router:Router){}
+    constructor(private router:Router,private dataStorageService:DataStorageService){}
+
+    onSaveData(){
+        this.dataStorageService.saveRecipes().subscribe((response)=>{
+            console.log(response)
+            alert('Recipes uploaded');
+        })
+    }
 
 }
