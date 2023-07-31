@@ -14,4 +14,12 @@ export class DataStorageService{
         const postData:Recipe[]=this.recipeService.getRecipes();
         return this.http.put('https://coursedb-901e2-default-rtdb.firebaseio.com/recipes.json',postData);
     }
+
+    fetchRecipes(){
+     this.http.get<Recipe[]>('https://coursedb-901e2-default-rtdb.firebaseio.com/recipes.json')
+        .subscribe(response=>{
+            this.recipeService.setRecipes(response);
+        });
+       
+    }
 }
